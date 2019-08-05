@@ -1,0 +1,161 @@
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+
+
+.buttonprofile {
+    color: #262626;
+    font-weight: 400;
+    &:hover {
+        color: #262626;
+    }
+}
+
+img {
+    display: block;
+}
+
+.container {
+    max-width: 93.5rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+
+/* Profile Section */
+
+.profile {
+    padding: 5rem 0;
+	background-color:#FFFAFA;
+}
+
+.profile::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.js-example-basic-single {
+  width: 100%;
+  
+  margin-bottom: 5px;
+  background-color:#FFFAFA;
+  padding: 8px 12px;
+  border: 1px solid #dbdbdb;
+  box-sizing: border-box;
+  border-radius: 3px;
+  font-size: 10px;
+  &:focus {
+      background-color: #FFFAFA;
+      outline: none;
+      textarea: none
+  }
+}
+
+.postbutton {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 15%;
+  background-color: #3897f0;
+  border: 1px solid #3897f0;
+  padding: 5px 12px;
+  font-size: 12px;
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.profile-image {
+    float: left;
+    width: calc(33.333% - 1rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 3rem;
+}
+
+.profile-postage {
+    float: left;
+    position: relative;
+    left: 70%;
+    
+    display: flex;
+}
+
+.profile-image img {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+}
+
+.profile-user-name {
+    display: inline-block;
+    font-size: 3.2rem;
+    font-weight: 300;
+    color: #262626;
+    
+}
+
+.profile-edit-btn {
+    font-size: 14px;
+    font-weight: 150;
+    line-height: 1.8;
+    border: 0.1rem solid #dbdbdb;
+    border-radius: 0.3rem;
+    padding: 0 2.4rem;
+    margin-left: 2rem;
+    
+    &:hover, &:focus {
+        outline: none;
+        text-decoration: none;
+    }
+}
+
+#download{
+	margin:10px auto;
+}
+
+.fb {
+    list-style-type: none;
+background-color: #F6F7F8;
+ font-family: helvetica, arial, 'lucida grande', sans-serif;
+ font-size: 12px;
+ border: 1px solid;
+ border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+ -webkit-border-radius: 3px;
+}
+.fb .post {
+ list-style-type: none;
+ background-color: #fff;
+ padding:40px;
+
+}
+
+#download {
+	max-width: 490px;
+	overflow:hidden;
+	line-height: 1.38;
+}
+#download .post .top {
+	margin-bottom: 11px;
+}
+#download .post .top .img {
+	float: left;
+	margin-right: 8px;
+}
+
+#download .post .top .name span {
+	color: #262626;
+	font-weight: 300;
+	font-size: 14px;
+}
+
+
+#download .post .text-message {
+	font-size: 13px;
+	font-weight: 300;
+    color: #262626;
+}

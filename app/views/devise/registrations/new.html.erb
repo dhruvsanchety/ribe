@@ -1,0 +1,18 @@
+<body style="background-color:#FFFAFA">
+  <div id="wrapper">
+    <div class="main-content">
+      <div>
+        <h4>Sign up to meet people.</h4><br>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render 'layouts/error_messages.html.erb', object: f.object %> 
+        <%= f.email_field :email, placeholder: "Email", autofocus: true, class: 'input-1' %>
+        <%= f.password_field :password, placeholder: "Password (Minimum 6 characters)", autocomplete: "off", class: 'input-2' %>
+        <%= f.submit "Sign Up", class: 'bu' %>
+        <% end %>
+      </div>
+    </div>
+    <div class="sub-content">
+    Have an account? <a class="skyblue" href="/users/sign_in">Log In</a>
+    </div>
+  </div>
+</body>

@@ -19,3 +19,9 @@
 
 # Ignore Byebug command history file.
 .byebug_history
+
+solr/data
+solr/test/data
+solr/development/data
+solr/default/data
+solr/pids

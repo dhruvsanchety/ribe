@@ -1,0 +1,91 @@
+<script>
+$(document).ready(function() {
+    theme: "bootstrap"
+    $('.js-example-basic-single').select2();
+});
+</script>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 30%;
+  padding: 0 10px;
+  clear: left;
+}
+.column2 {
+  float: left;
+  width: 60%;
+  padding: 0 0px;
+}
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+</style>
+</head>
+<body>
+
+
+<div class="row">
+  <div class="column">
+    
+      
+        <ul class="filters">
+          <%= form_tag user_post_path(user_id: current_user.id), :method => :get do %>
+           
+            <div class="greyyy">Gender<br></div>
+            <%= select_tag( :user_id, options_for_select([['Only Male','1'],['Only Female','2'],['Must Include Female','3'],['Must Include Male','4'],['Does Not Matter','5']], class: "js-examplee-basic-single"), class: "js-examplee-basic-single")%><br><br>
+            <div class="greyyy">College</div>
+            <%= select_tag( :user_id, options_for_select([['Only Students At My College','1'],['Only College Students','2'],['Must Include Students At My College','3'],['Must Include College Students','4'],['Does Not Matter','5']]), class: "js-examplee-basic-single")%><br><br>
+            <div class="greyyy">Minimum Age</div>
+            <%= select_tag( :user_id, options_for_select([[13], [14], [15],[16],[17],[18],[19],[20],[21],[22],[23],[24],[25],[26],[27],[28],[29],[30],[31],[32],[33],[34],[35],[36],[37],[38],[39],[40],[41],[42],[43],[44],[45],[46],[47],[48],[49],[50],[51],[52],[53],[54],[55],[56],[57],[58],[59],[60],[61],[62],[63],[64],[65],[66],[67],[68],[69],[70],[71],[72],[73],[74],[75],[76],[77],[78],[79],[80],[81],[82],[83],[84],[85],[86],[87],[88],[89],[90],[91],[92],[93],[94],[95],[96],[97],[98],[99],[100]]), class: 'js-examplee-basic-single') %><br><br>
+            <div class="greyyy">Maximum Age</div>
+            <%= select_tag( :user_id, options_for_select([[13], [14], [15],[16],[17],[18],[19],[20],[21],[22],[23],[24],[25],[26],[27],[28],[29],[30],[31],[32],[33],[34],[35],[36],[37],[38],[39],[40],[41],[42],[43],[44],[45],[46],[47],[48],[49],[50],[51],[52],[53],[54],[55],[56],[57],[58],[59],[60],[61],[62],[63],[64],[65],[66],[67],[68],[69],[70],[71],[72],[73],[74],[75],[76],[77],[78],[79],[80],[81],[82],[83],[84],[85],[86],[87],[88],[89],[90],[91],[92],[93],[94],[95],[96],[97],[98],[99],[100]]), class: 'js-examplee-basic-single') %>
+          <% end %>
+        </ul>
+      
+    
+  </div>
+  <div class="column2">
+    
+      <% @posts.each do |x| %>
+        <div class="fb" id="download">
+          <div class="post">
+    	       <div class="top">
+    	         <div class="name">
+    	           <strong><a href="#"><span class="text-name"><%= x.title %></span></a></strong>
+    	         </div>
+    	       </div>
+    	       <span class="text-message"><%= x.details %></span><br><br>
+    	    </div>
+        </div>
+      <% end %>
+    
+  </div>
+</div>
+
+</body>
+</html>

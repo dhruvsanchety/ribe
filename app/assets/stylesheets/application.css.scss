@@ -1,0 +1,215 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require select2 
+ *= require select2-bootstrap
+ *= require_tree
+ *= require_self
+ 
+ */
+
+
+
+
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+h1, h2, h3 {
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+.nav {
+  font-size: 14px;
+}
+
+input
+ {
+  margin-top: 10px;
+  font-size: 14px;
+  width: 150px;
+  height: 30px;
+}
+
+
+button {
+  margin-top: 10px;
+  outline: none;
+
+  border: none;
+  color: grey;
+}
+
+button {
+  &:hover {
+    color: grey;
+  }
+}
+
+input {
+  color: #666;
+  left: 100%;
+  border: 1px grey;
+}
+input:focus {
+  outline: 0 none;
+}
+
+
+.pixel {
+  font-size: 14px;
+}
+.navbar-default .navbar-toggle {
+    border: 2px solid white;
+    
+    &:hover, &:focus {
+        background-color: #00c6ff;
+    }
+}
+
+.searchbar {
+  width: 80%;
+  margin-bottom: 5px;
+  background-color:#FFFAFA;
+  padding: 8px 12px;
+  border: 1px solid #dbdbdb;
+  box-sizing: border-box;
+  border-radius: 3px;
+  font-size: 12px;
+  &:focus {
+      background-color: #FFFAFA;
+      outline: none;
+      textarea: none;
+  }
+}
+
+.navbar-brand {
+  font-size: 13px;
+}
+
+h4 {
+  color: grey;
+  font-size: 16px;
+}
+
+#wrapper {
+  width: 500px;
+  height: 50%;
+  overflow: hidden;
+  border: 0px solid #000;
+  margin: 50px auto;
+  padding: 10px;
+}
+
+
+
+.main-content {
+  width: 325px;
+  height: 40%;
+  margin: 10px auto;
+  background-color: #fff;
+  border: 1px solid #e6e6e6;
+  padding: 40px 50px;
+  text-align: center;
+}
+
+.post-content {
+  width: 500px;
+  height: 40%;
+  margin: 10px auto;
+  background-color: #fff;
+  border: 1px solid #e6e6e6;
+  padding: 40px 50px;
+  text-align: center;
+}
+
+.input-1, .input-2 {
+  width: 100%;
+  margin-bottom: 5px;
+  background-color:#FFFAFA;
+  padding: 8px 12px;
+  border: 1px solid #dbdbdb;
+  box-sizing: border-box;
+  border-radius: 3px;
+  font-size: 12px;
+  &:focus {
+      background-color: #FFFAFA;
+      outline: none;
+      textarea: none;
+  }
+}
+
+textarea {resize: none}
+
+.bu {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  background-color: #3897f0;
+  border: 1px solid #3897f0;
+  padding: 5px 12px;
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.sub-content {
+  width: 325px;
+  margin: 10px auto;
+  border: 1px solid #e6e6e6;
+  padding: 20px 50px;
+  background-color: #fff;
+  text-align: center;
+}
+
+a {
+  &:focus {
+    text-decoration: none;
+    text-align: center;
+    
+  }
+  &:hover {
+    text-decoration: none;
+    text-align: center;
+  }
+}
+
+.forgot {
+  text-decoration: none; 
+  font-size: 11px;
+  color: #191970;
+  text-align: center;
+}
+
+.forgotdescription {
+  color: grey;
+  font-size: 14px;
+}
+
+.forgot:hover{
+  text-decoration: none; 
+  font-size: 11px;
+  color: #191970;
+  text-align: center;
+}
+
+.navbar {
+  background-color: white;
+  border: none;
+  font-size: 12px;
+  
+}
+
+

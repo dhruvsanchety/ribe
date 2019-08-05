@@ -1,0 +1,19 @@
+<body style="background-color:#FFFAFA">
+    <div id="wrapper">
+      <div class="main-content">
+        <div>
+          <h4>Trouble Logging In?</h4>
+          <div class="forgotdescription">
+          Enter your email and we'll send you a link to get back into your account.
+          <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+          <%= render 'layouts/error_messages.html.erb', object: f.object %> 
+          <%= f.email_field :email, placeholder: "Email", autofocus: true, class: 'input-1' %>
+          <%= f.submit "Send Login Link", class: 'bu' %>
+          <% end %>
+          </div>
+        </div>
+        <a href="/users/sign_up">Create New Account</a><br>
+        <a href="/users/sign_in">Back To Login</a>
+      </div>
+    </div>
+  </body>
