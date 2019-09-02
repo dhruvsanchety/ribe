@@ -2,6 +2,7 @@
   <div id="wrapper">
     <div class="main-content">
       <div>
+        <h4>ribe</h4>
         <h4>Sign up to meet people.</h4><br>
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render 'layouts/error_messages.html.erb', object: f.object %> 
@@ -12,7 +13,11 @@
       </div>
     </div>
     <div class="sub-content">
-    Have an account? <a class="skyblue" href="/users/sign_in">Log In</a>
+    Have an account? <a class="skyblue" href="/users/sign_in">Log In</a><br>
+    
     </div>
+    
+    
   </div>
+  
 </body>

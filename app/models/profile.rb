@@ -1,7 +1,6 @@
 class Profile < ActiveRecord::Base
   belongs_to :user
   validates :first_name, presence: true
-  validates :last_name, presence: true
   
   
   has_attached_file :avatar,
@@ -16,10 +15,14 @@ class Profile < ActiveRecord::Base
       return if Swot::is_academic?(self.collegeemail) && Swot::is_academic?(domain)
     end
     if self.collegeemail.present?
-      errors.add(:collegeemail, 'not academic email')
+      errors.add(:collegeemail, 'does not exist or is not a college email')
     end 
   end
+  
+  
 
   validate :checkemail?
+ 
+  
        
 end

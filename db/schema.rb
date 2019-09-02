@@ -10,18 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190804202631) do
+ActiveRecord::Schema.define(version: 20190814144132) do
 
-  create_table "posts", force: :cascade do |t|
+  create_table "chatroom_users", force: :cascade do |t|
+    t.integer  "chatroom_id"
     t.integer  "user_id"
+    t.boolean  "admin",       default: false
+    t.boolean  "read",        default: true
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["chatroom_id"], name: "index_chatroom_users_on_chatroom_id"
+    t.index ["user_id"], name: "index_chatroom_users_on_user_id"
+  end
+
+  create_table "chatrooms", force: :cascade do |t|
     t.string   "title"
     t.text     "details"
     t.string   "gender"
     t.string   "collegestudent"
     t.integer  "minimumage"
     t.integer  "maximumage"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.boolean  "visible",        default: true
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.string   "city"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer  "chatroom_id"
+    t.integer  "user_id"
+    t.text     "body"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -32,12 +54,24 @@ ActiveRecord::Schema.define(version: 20190804202631) do
     t.integer  "user_id"
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "age"
+    t.integer  "age"
     t.string   "gender"
     t.string   "city"
     t.string   "collegeemail"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.string   "genderpreference",    default: "Does Not Matter"
+    t.integer  "minimumage",          default: 13
+    t.integer  "maximumage",          default: 100
+    t.string   "collegepreference",   default: "Does Not Matter"
+    t.string   "search",              default: ""
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "chatroom_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|

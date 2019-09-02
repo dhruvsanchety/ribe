@@ -1,0 +1,94 @@
+<div class="fluid-container">
+	<div class="row">
+		<% if @chatroom.chatroom_users.exists?(user_id: current_user.id) %>
+		<div class="col-sm-2">
+			<% if user_signed_in? %>
+				<h5 class="title">Conversations</h5>
+				<ul>
+					<% current_user.chatrooms.each do |chatroom| %>
+						<% @currentchatroomuser = chatroom.chatroom_users.where(user_id: current_user.id).first %>
+						<% if @currentchatroomuser.read == true %>
+							<li><%= link_to chatroom.title, chatroom %><br>
+						<% else %>
+							<li><b><%= link_to chatroom.title, chatroom %></b><br></li>
+						<% end %>
+						<%= link_to 'Leave', chatroom_chatroom_users_path(chatroom_id: @chatroom.id, user_id: current_user.id), method: :delete %></li>
+					<%end%>
+				</ul>
+			<% end %>
+		</div>
+		<% end%>
+		
+	  <div class="col-sm-8">
+	    <p id="notice"><%= notice %></p>
+
+      <p>
+        <strong>Title:&nbsp;</strong>
+        <%= @chatroom.title %><br>
+        <% if !@chatroom.details.blank? %>
+        <strong>Details:&nbsp;</strong>
+        <%= @chatroom.details %>
+        <% end %>
+      </p>
+      <% if @chatroom.chatroom_users.exists?(user_id: current_user.id) %>
+      <div data-behavior='messages'>
+        <% @messages.each do |message| %>
+        	<div><strong><%= message.user.profile.first_name %>:&nbsp;</strong><%= message.body %></div>
+        <%end%>
+      </div>
+      <%= form_for [@chatroom, Message.new], url: chatroom_messages_path(chatroom_id: @chatroom.id, user_id: current_user.id), method: :post, remote: true do |f| %>
+        <%= f.text_area :body, rows: 1, class: "form-control", autofocus: true  %>
+        
+      <% end %>
+      <% end %>
+	  </div>
+	  <div class="col-sm-2">
+	 	
+	  <% if @chatroom.chatroom_users.exists?(user_id: current_user.id) %><div class="col-sm-2"><%end%>
+			<% if user_signed_in? %>
+				<h5 class="title">Members</h5>
+				<ul>
+					<% @chatroom.chatroom_users.each do |x| %>
+						<% @conversationmember = User.find(x.user_id) %>
+						<div class="post-image">
+      					<li><%= image_tag @conversationmember.profile.avatar.url(:medium) %>
+      	    			</div>
+						<%= link_to @conversationmember.profile.first_name, user_path(x.user_id) %>&nbsp;|&nbsp;<%=@conversationmember.profile.age%>
+						<%if !@conversationmember.profile.collegeemail.blank? %>
+							&nbsp;|&nbsp;<%=Swot::school_name(@conversationmember.profile.collegeemail)%>
+						<%end%></li><br>
+					
+					
+					
+					<%end%>
+				</ul>
+	
+				<% if @chatroom.chatroom_users.exists?(user_id: current_user.id) %>
+				
+				<h5 class="title">Requests</h5>
+				<ul>
+					<% @chatroom.requests.order("created_at DESC").each do |x| %>
+						<%if !@chatroom.chatroom_users.exists?(user_id: x.user_id)%>
+							<li><% @conversationrequest = User.find(x.user_id) %>
+							<div class="post-image">
+	      			<%= image_tag @conversationrequest.profile.avatar.url(:medium) %>
+	      	    </div>&nbsp;
+							<%= link_to @conversationrequest.profile.first_name, user_path(x.user_id) %>&nbsp;has requested to join the conversation</li>
+							
+						<%end%>
+					<%end%>
+				</ul>
+				<% end %>
+				
+			<% end %>
+		</div>
+		
+	</div>
+</div>
+
+
+
+
+
+
+

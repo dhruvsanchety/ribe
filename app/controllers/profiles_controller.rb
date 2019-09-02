@@ -16,6 +16,7 @@ class ProfilesController < ApplicationController
     @profile = @user.build_profile( profile_params )
     if @profile.save
       flash[:success] = "Profile Created"
+      
       redirect_to user_path(id: params[:user_id] )
     else
       render action: :new
@@ -33,7 +34,7 @@ class ProfilesController < ApplicationController
     if @profile.update_attributes(profile_params)
       flash[:success] = "Profile Updated."
       #redirect to their profile page
-      redirect_to user_path(id: params[:user_id] )
+      redirect_to root_path
     else
       render action: :edit
     end
@@ -41,7 +42,7 @@ class ProfilesController < ApplicationController
   
   private
     def profile_params
-      params.require(:profile).permit(:first_name, :last_name, :avatar, :age, :gender, :city, :collegeemail)
+      params.require(:profile).permit(:first_name, :last_name, :avatar, :age, :gender, :city, :collegeemail, :minimumage, :maximumage, :genderpreference, :collegepreference, :search)
     end
     
     def only_current_user

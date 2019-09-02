@@ -1,0 +1,79 @@
+<div class="container fluid">
+	<div class="row">
+		<div class="col-sm-4">
+			<% if user_signed_in? %>
+				<h5 class="title">Conversations</h5>
+				<ul>
+					<% current_user.chatrooms.each do |chatroom| %>
+						<% @currentchatroomuser = chatroom.chatroom_users.where(user_id: current_user.id).first %>
+						<% if @currentchatroomuser.read == true %>
+							<li><%= link_to chatroom.title, chatroom %><br>
+						<% else %>
+							<li><b><%= link_to chatroom.title, chatroom %></b><br></li>
+						<% end %>
+						<%= link_to 'Leave', chatroom_chatroom_users_path(chatroom_id: chatroom.id, user_id: current_user.id), method: :delete %></li>
+					
+					<%end%>
+				</ul>
+			<% end %>
+		</div>
+		<div class="col-sm-4">
+			<% if user_signed_in? %>
+				<h5 class="title">Requests</h5>
+				<ul>
+					<% current_user.chatrooms.each do |x| %>
+						
+						<% x.requests.order("created_at DESC").each do |t| %>
+							<%if !x.chatroom_users.exists?(user_id: t.user_id)%>
+								<% @chatroom_user = ChatroomUser.find_by user_id: current_user.id, chatroom_id: x.id %>
+								<% if @chatroom_user.admin == true %>
+								<li><% @conversationrequest = User.find(t.user_id) %>
+								<div class="post-image">
+      	         					<%= image_tag @conversationrequest.profile.avatar.url(:medium) %>
+      	         				</div>&nbsp;
+								<%= link_to @conversationrequest.profile.first_name, user_path(t.user_id) %>&nbsp;has requested to join&nbsp;<%= x.title %></li>
+								
+								<% temporarystring = 'Accept '+@conversationrequest.profile.first_name%>
+								<%= link_to temporarystring, chatroom_chatroom_users_path(request_id: t.id, chatroom_id: x.id), method: :post%><br>
+							
+								<%= link_to 'Delete Request', chatroom_requests_path(chatroom_id: x.id, request_id: t.id), method: :delete%>
+							
+								<%end%>
+							<%end%>
+						<%end%>
+					<%end%>
+											
+							
+							
+						
+				</ul>
+			<% end %>
+		</div>
+		<div class="col-sm-4">
+			<% if user_signed_in? %>
+				<h5 class="title">Your Requests</h5>
+				<ul>
+					<% current_user.requests.each do |x| %>
+						<% @conversation = Chatroom.find(x.chatroom_id) %>
+						<% if !@conversation.chatroom_users.exists?(user_id: current_user.id)%>
+						<li>You have requested to join&nbsp;<%=@conversation.title%></li>
+						<% end %>
+					
+					<%end%>
+				</ul>
+			<%end%>
+					
+		</div>
+	  
+	</div>
+</div>	
+
+
+
+
+
+
+
+
+
+

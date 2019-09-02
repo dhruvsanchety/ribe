@@ -14,51 +14,53 @@
           <nav class="navbar navbar-default navbar-static-top" role="navigation">
             <div class='container'>
               <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
                 
                 
                
-                </button>
-                <li><%= link_to root_path, class: "navbar-brand" do %>
-                  
-                    <i class="fas fa-running"></i>
-                  
-                <% end %></li>
+            
+                <%= link_to root_path, class: "navbar-brand" do %>
+                    ribe
+                <% end %>
               </div>
             <div class="collapse navbar-collapse" id="main-nav-collapse">
               <div class="nav navbar-nav navbar-right">
-                
+                <% if user_signed_in? %>
+                  <li><%= link_to "Log Out", destroy_user_session_path, method: :delete%></li>
+                <% else %>
+                  <li><%= link_to "Log In", new_user_session_path, class: "linkfocus"%></li>
+                  <li><%= link_to "Sign Up", new_user_registration_path, class: "linkfocus"%></li>
+                <% end %>
               </div>
               <ul class="nav navbar-nav navbar-right">
                 
                 <% if user_signed_in? %>
-  
-                  
                   <% if current_user.profile %>
-                    <li><%= form_tag user_post_path(user_id: current_user.id), :method => :get do %>
+                    <li><%= form_for current_user.profile, url: user_profile_path(current_user.id) do |f| %>
                     <p>
-                    <%= text_field_tag :search, params[:search], autocomplete: "off", placeholder: "Try \"Tennis\"", class: 'searchbar' %>
+                    <%= f.text_field :search, autocomplete: "off", placeholder: "Try \"Tennis\"", class: 'searchbar' %>
+ 
                     <button type="submit"><i class="fa fa-search"></i>
                     <% end %></li>
-                    <li><%= link_to new_user_post_path(user_id: current_user.id), class: "navbar-brand" do %>
-                      <i class="fas fa-plus"></i>
-                    <% end %></li>
+                    <li><%= link_to "Create Post", new_chatroom_path(user_id: current_user.id), class: "navbar-brand" %></li>
+                
                     
-                    <li><%= link_to new_user_post_path(user_id: current_user.id), class: "navbar-brand" do %>
+                    <li><%= link_to chatrooms_path(user_id: current_user.id), class: "navbar-brand" do %>
                       <i class="fas fa-comment"></i>
                     <% end %></li>
                     <li><%= link_to user_path(id:current_user.id), class: "navbar-brand" do %>
                       <i class="fas fa-user"></i>
                     <% end %></li>
                     
-                  <% else %>
-                    <li><%= link_to "Create Profile", new_user_profile_path(user_id: current_user.id), class: "linkfocus"%></li>
+                    <% else %>
+                    <li><%= link_to "Create Profile", new_user_profile_path(user_id: current_user.id)%></li>
                   <% end %>
-                  <li><%= link_to "Log Out", destroy_user_session_path, method: :delete%></li>
-                  <% else %>
-                    <li><%= link_to "Log In", new_user_session_path, class: "linkfocus"%></li>
-                    <li><%= link_to "Sign Up", new_user_registration_path, class: "linkfocus"%></li>
                 <% end %>
-                
               </ul>
               
             </div><!-- /.navbar-collapse -->
