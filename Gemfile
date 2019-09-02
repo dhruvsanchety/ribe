@@ -23,9 +23,9 @@ gem 'jbuilder', '2.5.0'
 # gem 'bcrypt', '3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem "nokogiri", ">= 1.10.4"
 #look good
-gem 'bootstrap-sass', '3.3.7'
+gem "bootstrap-sass", ">= 3.4.1"
 
 #icons
 gem 'font-awesome-sass', '5.0.13'
@@ -56,7 +56,7 @@ gem 'sunspot_solr'
 #email
 gem 'email_verifier'
 
-gem 'paperclip', '4.3.6'
+gem "paperclip", ">= 5.2.0"
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
