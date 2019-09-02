@@ -32,7 +32,7 @@ gem 'font-awesome-sass', '5.0.13'
 
 gem 'hirb', '0.7.3'
 #login
-gem 'devise', '4.2.0'
+gem 'devise', '4.6.0'
 
 #collegeemail verification
 gem 'swot', '1.0'
