@@ -5,8 +5,9 @@ class ChatroomUsersController < ApplicationController
 		@chatroom = Chatroom.find(params[:chatroom_id])
 		@request = Request.find(params[:request_id])
 		@chatroom_user = @chatroom.chatroom_users.where(user_id: @request.user_id).first_or_create
+		
 		@chatroom.requests.where(user_id: @request.user_id).destroy_all
-		redirect_to chatrooms_path(user_id: current_user.id)
+		redirect_to chatrooms_path(:uid => current_user.uid, :id => current_user.id)
 	end 
 	
 
@@ -30,7 +31,7 @@ class ChatroomUsersController < ApplicationController
 				x.update_attribute(:admin, true)
 			end
 		end
-		redirect_to chatrooms_path(user_id: current_user.id)
+		redirect_to chatrooms_path(:uid => current_user.uid, :id => current_user.id)
 	end
 	
 

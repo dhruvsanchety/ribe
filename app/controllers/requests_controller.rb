@@ -17,7 +17,7 @@ class RequestsController < ApplicationController
 		@request = Request.find(params[:request_id])
 		@user = User.find(@request.user_id)
 		@chatroom.requests.where(user_id: @user.id).destroy_all
-		redirect_to chatrooms_path(user_id: current_user.id)
+		redirect_to chatrooms_path(:uid => current_user.uid, :id => current_user.id)
 	end
 	
     

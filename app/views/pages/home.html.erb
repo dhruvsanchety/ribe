@@ -101,11 +101,11 @@ $(document).ready(function() {
       	       <%= link_to "Members", chatroom_path(chatroom.id) %><br><br>
       	       <% chatroom.chatroom_users.limit(3).each do |x| %>
       	         <div class="post-image">
-      	         <% @conversation_member = User.find(x.user_id) %>
+      	         <% @conversation_member = User.find(x.user_id) %><% @conversation_member = User.find_by_uid(@conversation_member.uid) %>
       	         <%= image_tag @conversation_member.profile.avatar.url(:medium) %>
       	         </div>
       	         <div class = "postname">
-      	           <%= link_to @conversation_member.profile.first_name, user_path(@conversation_member.id) %>&nbsp;
+      	           <%= link_to @conversation_member.profile.first_name, user_path(:uid => @conversation_member, :id => @conversation_member.id) %>&nbsp;
       	         </div>
       	       <% end %>
       	       <% if chatroom.chatroom_users.count > 3 %>

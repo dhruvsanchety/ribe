@@ -27,11 +27,11 @@
 							<%if !x.chatroom_users.exists?(user_id: t.user_id)%>
 								<% @chatroom_user = ChatroomUser.find_by user_id: current_user.id, chatroom_id: x.id %>
 								<% if @chatroom_user.admin == true %>
-								<li><% @conversationrequest = User.find(t.user_id) %>
+								<li><% @conversationrequest = User.find(t.user_id) %><% @conversationrequest = User.find_by_uid(@conversationrequest.uid) %>
 								<div class="post-image">
       	         					<%= image_tag @conversationrequest.profile.avatar.url(:medium) %>
       	         				</div>&nbsp;
-								<%= link_to @conversationrequest.profile.first_name, user_path(t.user_id) %>&nbsp;has requested to join&nbsp;<%= x.title %></li>
+								<%= link_to @conversationrequest.profile.first_name, user_path(:uid => @conversationrequest, :id => @conversationrequest.id) %>&nbsp;has requested to join&nbsp;<%= x.title %></li>
 								
 								<% temporarystring = 'Accept '+@conversationrequest.profile.first_name%>
 								<%= link_to temporarystring, chatroom_chatroom_users_path(request_id: t.id, chatroom_id: x.id), method: :post%><br>

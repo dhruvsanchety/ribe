@@ -20,8 +20,6 @@
 		<% end%>
 		
 	  <div class="col-sm-8">
-	    <p id="notice"><%= notice %></p>
-
       <p>
         <strong>Title:&nbsp;</strong>
         <%= @chatroom.title %><br>
@@ -49,11 +47,11 @@
 				<h5 class="title">Members</h5>
 				<ul>
 					<% @chatroom.chatroom_users.each do |x| %>
-						<% @conversationmember = User.find(x.user_id) %>
+						<% @conversationmember = User.find(x.user_id) %> <% @conversationmember = User.find_by_uid(@conversationmember.uid) %>
 						<div class="post-image">
       					<li><%= image_tag @conversationmember.profile.avatar.url(:medium) %>
       	    			</div>
-						<%= link_to @conversationmember.profile.first_name, user_path(x.user_id) %>&nbsp;|&nbsp;<%=@conversationmember.profile.age%>
+						<%= link_to @conversationmember.profile.first_name, user_path(:uid => @conversationmember.uid, :id => @conversationmember.id) %>&nbsp;|&nbsp;<%=@conversationmember.profile.age%>
 						<%if !@conversationmember.profile.collegeemail.blank? %>
 							&nbsp;|&nbsp;<%=Swot::school_name(@conversationmember.profile.collegeemail)%>
 						<%end%></li><br>
@@ -64,20 +62,7 @@
 				</ul>
 	
 				<% if @chatroom.chatroom_users.exists?(user_id: current_user.id) %>
-				
-				<h5 class="title">Requests</h5>
-				<ul>
-					<% @chatroom.requests.order("created_at DESC").each do |x| %>
-						<%if !@chatroom.chatroom_users.exists?(user_id: x.user_id)%>
-							<li><% @conversationrequest = User.find(x.user_id) %>
-							<div class="post-image">
-	      			<%= image_tag @conversationrequest.profile.avatar.url(:medium) %>
-	      	    </div>&nbsp;
-							<%= link_to @conversationrequest.profile.first_name, user_path(x.user_id) %>&nbsp;has requested to join the conversation</li>
-							
-						<%end%>
-					<%end%>
-				</ul>
+				<h5 class="title"><%=@chatroom.requests.count%>&nbsp;request(s)</h5>
 				<% end %>
 				
 			<% end %>

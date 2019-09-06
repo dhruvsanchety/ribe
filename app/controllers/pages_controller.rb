@@ -2,6 +2,7 @@
 
 class PagesController < ApplicationController
     def home
+        @user = User.find_by_uid(current_user.uid)
         if current_user.profile
             
             @search = Chatroom.search do

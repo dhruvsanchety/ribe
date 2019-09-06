@@ -32,8 +32,11 @@ gem 'font-awesome-sass', '5.0.13'
 
 gem 'hirb', '0.7.3'
 gem 'aws-sdk', '~> 2.3'
+
 #login
 gem 'devise', '4.6.0'
+gem 'devise_uid'
+
 
 #collegeemail verification
 gem 'swot', '1.0'

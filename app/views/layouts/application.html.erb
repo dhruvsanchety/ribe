@@ -41,24 +41,24 @@
                 
                 <% if user_signed_in? %>
                   <% if current_user.profile %>
-                    <li><%= form_for current_user.profile, url: user_profile_path(current_user.id) do |f| %>
+                    <li><%= form_for current_user.profile, url: user_profile_path(@user) do |f| %>
                     <p>
                     <%= f.text_field :search, autocomplete: "off", placeholder: "Try \"Tennis\"", class: 'searchbar' %>
  
                     <button type="submit"><i class="fa fa-search"></i>
                     <% end %></li>
-                    <li><%= link_to "Create Post", new_chatroom_path(user_id: current_user.id), class: "navbar-brand" %></li>
+                    <li><%= link_to "Create Post", new_chatroom_path(user_uid: current_user.uid), class: "navbar-brand" %></li>
                 
                     
-                    <li><%= link_to chatrooms_path(user_id: current_user.id), class: "navbar-brand" do %>
+                    <li><%= link_to chatrooms_path(user_uid: current_user.uid), class: "navbar-brand" do %>
                       <i class="fas fa-comment"></i>
                     <% end %></li>
-                    <li><%= link_to user_path(id:current_user.id), class: "navbar-brand" do %>
+                    <li><%= link_to user_path(:uid => current_user.uid, :id => current_user.id), class: "navbar-brand" do %>
                       <i class="fas fa-user"></i>
                     <% end %></li>
                     
                     <% else %>
-                    <li><%= link_to "Create Profile", new_user_profile_path(user_id: current_user.id)%></li>
+                    <li><%= link_to "Create Profile", new_user_profile_path(user_uid: current_user.uid)%></li>
                   <% end %>
                 <% end %>
               </ul>

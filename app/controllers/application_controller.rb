@@ -9,7 +9,8 @@ class ApplicationController < ActionController::Base
       current_user.profile.update_attribute(:maximumage, 100)
       stored_location_for(resource) || root_path
     else
-      new_user_profile_path(user_id: current_user.id)
+      @user = User.find_by_uid(current_user.uid)
+      new_user_profile_path(@user)
     end
 	  
   end
