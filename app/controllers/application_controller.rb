@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
       stored_location_for(resource) || root_path
     else
       @user = User.find_by_uid(current_user.uid)
-      new_user_profile_path(@user)
+      new_user_profile_path(user_id: current_user.id, user_uid: current_user.uid)
     end
 	  
   end
