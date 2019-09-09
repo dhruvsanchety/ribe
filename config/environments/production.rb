@@ -1,5 +1,4 @@
 Rails.application.configure do
-  
   config.paperclip_defaults = {
     storage: :s3,
     s3_credentials: {
@@ -9,6 +8,7 @@ Rails.application.configure do
       s3_region: ENV.fetch('AWS_REGION'),
     }
   }
+  
   # doesn't have to be Heroku, but you get the idea.
   # Settings specified here will take precedence over those in config/application.rb.
 
