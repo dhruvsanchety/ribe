@@ -61,7 +61,8 @@ gem 'sunspot_solr'
 gem 'email_verifier'
 
 gem 'paperclip'
-gem 'aws-sdk-s3'
+gem 'aws-sdk', '~> 2.3'
+
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
