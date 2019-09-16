@@ -23,6 +23,8 @@ Rails.application.configure do
   # doesn't have to be Heroku, but you get the idea.
   config.action_mailer.default_url_options = { :host => 'secure-sands-30868.herokuapp.com' }
   
+  
+  
   # doesn't have to be Heroku, but you get the idea.
   # Settings specified here will take precedence over those in config/application.rb.
 
