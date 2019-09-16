@@ -7,6 +7,7 @@
         <%= render 'layouts/error_messages.html.erb', object: f.object %> 
         <%= f.email_field :email, placeholder: "Email", autofocus: true, class: "input-1" %>
         <%= f.password_field :password, placeholder: "Password", autocomplete: "off", class: "input-2" %>
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "input-2" %>
         <%= f.submit "Log In", class: 'bu' %>
         <% end %>
       </div>
