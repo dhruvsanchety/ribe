@@ -52,9 +52,7 @@
       					<li><%= image_tag @conversationmember.profile.avatar.url(:medium) %>
       	    			</div>
 						<%= link_to @conversationmember.profile.first_name, user_path(:uid => @conversationmember.uid, :id => @conversationmember.id) %>&nbsp;|&nbsp;<%=@conversationmember.profile.age%>
-						<%if !@conversationmember.profile.collegeemail.blank? %>
-							&nbsp;|&nbsp;<%=Swot::school_name(@conversationmember.profile.collegeemail)%>
-						<%end%></li><br>
+						</li><br>
 					
 					
 					
