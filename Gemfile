@@ -34,7 +34,7 @@ gem 'hirb', '0.7.3'
 
 
 #login
-gem 'devise', '4.6.0'
+gem 'devise', '4.7.1'
 gem 'devise_uid'
 
 
